@@ -1,6 +1,8 @@
-# Juju Chamrs tutorial 
+# Juju Charms tutorial
 
 ## Software installation
+
+Installation of juju and charmcraft
 
 	$ sudo snap install juju --classic
 	$ sudo snap install charm --classic
@@ -43,7 +45,11 @@ After running these commands, you should have the following structure:
 
 ## Changing files
 
+Changing files to create a basic charm
+
 ### metadata.yaml
+
+You should replace the maintainer
 
 ```yaml
 name: prometheus-node-exporter
@@ -208,6 +214,8 @@ if __name__ == "__main__":
 
 ### local-config.yaml
 
+Keep in mind that you should replace the hostname with your machine, as well as the username and password that you have.
+
 ```yaml
 # this parameters should be adapted to
 # the characteristics of your destination VM
@@ -217,13 +225,34 @@ prometheus-node-exporter:
         ssh-password: password
 ```
 
-lxd init --auto
+### Notes
 
-charmcraft build
+Before building the charm you might need to execute the following commands:
 
-lxc network set lxdbr0 ipv6.address none
+	$ lxd init --auto
+	$ lxc network set lxdbr0 ipv6.address none
+	
+Build the charm:
 
-juju bootstrap
+	$ charmcraft build
+	
+Before deploying you might need to choose your controller (In your case should be localhost):
+	
+	$ juju bootstrap
+	
+Deploying the charm using the configurations in the local-config file:
+
+	$ juju deploy ./prometheus-node-exporter_ubuntu-20.04-amd64.charm  --config local-config.yaml
+	
+Check status:
+
+	$ juju status
+	
+Execute the **'run'** action to run a command inside the VM/VNF. You can check your *unit_id* with juju status.
+
+	$ juju run-action prometheus-node-exporter/<unit_id> run "command"="ls -la" --wait
+	
+
 
 
 ## Adding the Prometheus Node Metrics Exporter's logic
@@ -418,6 +447,42 @@ def _stop_prometheus_exporter(self, event):
     self.unit.status = ActiveStatus("Prometheus Exporter Service was Stopped")
     return True
 ```
+
+### Check if charm is working
+
+#### Build and deploy the charm again
+
+First, remove the first charm that we deployed:
+
+	$ juju remove-application prometheus-node-exporter
+	
+Using the commands in the first charm, build and deploy.
+
+#### Run the action for the prometheus that we created
+
+	$ juju run-action prometheus-node-exporter/<unit_id> start-prometheus-exporter --wait
+	
+## Useful juju commands
+
+### Delete an application
+
+	$ juju remove-application <application_id>
+
+### Delete a machine 
+
+	$ juju remove-machine <machine_id>
+
+### Check deployment logs
+
+	$ juju debug-log
+	
+### Continuously observe deployment status
+
+	$ juju status –watch 5s
+
+### Access machine terminal
+
+	$ juju ssh <machine_id>
 
 
         
