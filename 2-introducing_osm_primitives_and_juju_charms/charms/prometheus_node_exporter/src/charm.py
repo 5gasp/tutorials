@@ -142,6 +142,7 @@ class SampleProxyCharm(SSHProxyCharm):
                 self.unit.status = MaintenanceStatus(commands[i]["ok_status"])
             except Exception as e:
                 event.fail("[Unable to Get the Prometheus Exporter Binary] Action failed {}. Stderr: {}".format(e, error))
+                raise Exception("[Unable to Get the Prometheus Exporter Binary] Action failed {}. Stderr: {}".format(e, error))
                 self.unit.status = BlockedStatus(commands[i]["error_status"])
                 return False
             
@@ -185,6 +186,7 @@ class SampleProxyCharm(SSHProxyCharm):
                 self.unit.status = MaintenanceStatus(commands[i]["ok_status"])
             except Exception as e:
                 event.fail("[Unable to Create Prometheus Exporter Service With Success] Action failed {}. Stderr: {}".format(e, error))
+                raise Exception("[Unable to Create Prometheus Exporter Service With Success] Action failed {}. Stderr: {}".format(e, error))
                 self.unit.status = BlockedStatus(commands[i]["error_status"])
                 return False
 
@@ -203,6 +205,7 @@ class SampleProxyCharm(SSHProxyCharm):
             self.unit.status = MaintenanceStatus("Started Prometheus Exporter Service...")
         except Exception as e:
             event.fail("[Couldn't Start Prometheus Exporter Service] Action failed {}. Stderr: {}".format(e, error))
+            raise Exception("[Couldn't Start Prometheus Exporter Service] Action failed {}. Stderr: {}".format(e, error))
             self.unit.status = BlockedStatus("Couldn't Start Prometheus Exporter Service...")
             return False
 
@@ -218,6 +221,7 @@ class SampleProxyCharm(SSHProxyCharm):
                 return False
         except Exception as e:
             event.fail("[Prometheus Exporter Service is not Running] Action failed {}. Stderr: {}".format(e, error))
+            raise Exception("[Prometheus Exporter Service is not Running] Action failed {}. Stderr: {}".format(e, error))
             self.unit.status = BlockedStatus("Prometheus Exporter Service is not Running")
             return False
 
@@ -237,6 +241,7 @@ class SampleProxyCharm(SSHProxyCharm):
             self.unit.status = MaintenanceStatus("Stopped Prometheus Exporter Service")
         except Exception as e:
             event.fail("[Couldn't Stop Prometheus Exporter Service] Action failed {}. Stderr: {}".format(e, error))
+            raise Exception("[Couldn't Stop Prometheus Exporter Service] Action failed {}. Stderr: {}".format(e, error))
             self.unit.status = BlockedStatus("Couldn't Stop Prometheus Exporter Service")
             return False
             
