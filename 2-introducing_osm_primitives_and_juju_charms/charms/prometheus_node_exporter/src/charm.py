@@ -133,6 +133,7 @@ class SampleProxyCharm(SSHProxyCharm):
 
         for i in range(len(commands)):
             self.unit.status = MaintenanceStatus(commands[i]["initial_status"])
+            result, error = None, None
             try:
                 proxy = self.get_ssh_proxy()
                 result, error = proxy.run(commands[i]["command"])
@@ -175,6 +176,7 @@ class SampleProxyCharm(SSHProxyCharm):
 
         for i in range(len(commands)):
             self.unit.status = MaintenanceStatus(commands[i]["initial_status"])
+            result, error = None, None
             try:
                 proxy = self.get_ssh_proxy()
                 result, error = proxy.run(commands[i]["command"])
@@ -192,6 +194,7 @@ class SampleProxyCharm(SSHProxyCharm):
 
     def _run_prometheus_exporter(self, event):
         self.unit.status = MaintenanceStatus("Starting Prometheus Exporter Service...")
+        result, error = None, None
         try:
             proxy = self.get_ssh_proxy()
             result, error = proxy.run("sudo service node_exporter start")
@@ -204,6 +207,7 @@ class SampleProxyCharm(SSHProxyCharm):
             return False
 
         self.unit.status = MaintenanceStatus("Checking if Prometheus Exporter Service is Running")
+        result, error = None, None
         try:
             proxy = self.get_ssh_proxy()
             result, error = proxy.run("curl -Is http://127.0.0.1:9100/metrics | head -1")
@@ -224,6 +228,7 @@ class SampleProxyCharm(SSHProxyCharm):
 
     def _stop_prometheus_exporter(self, event):
         self.unit.status = MaintenanceStatus("Stopping Prometheus Exporter Service...")
+        result, error = None, None
         try:
             proxy = self.get_ssh_proxy()
             result, error = proxy.run("sudo service node_exporter stop")
