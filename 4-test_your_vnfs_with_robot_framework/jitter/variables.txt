@@ -1,0 +1,8 @@
+export jitter_host1_ip=10.0.12.233
+export jitter_host1_username=ubuntu
+export jitter_host1_password=password
+export jitter_host2_ip=10.0.12.226
+export jitter_host2_username=ubuntu
+export jitter_host2_password=password
+export jitter_comparator=less_or_equal_than
+export jitter_threshold=0.03
