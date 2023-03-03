@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.8.10 on linux)" generated="20230302 15:13:35.802" rpa="false" schemaversion="3">
+<suite id="s1" name="Robot Interactive Console" source="/home/chrisys/.vscode-server/extensions/robocorp.robotframework-lsp-1.9.0/src/robotframework_ls/vendored/robotframework_interactive/robot_interactive_console.robot">
+<test id="s1-t1" name="Default Task/Test" line="5">
+<kw name="Interpreter Main Loop" library="MainLoop">
+<kw name="Vnf Etsi" library="vnf_etsi">
+<var>${vnf_val}</var>
+<msg timestamp="20230302 15:13:48.845" level="INFO">[!] Cannot connect to the SSH Server</msg>
+<errors>
+</errors>
+</robot>
