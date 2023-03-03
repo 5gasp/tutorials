@@ -1,104 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.8.10 on linux)" generated="20230303 11:38:07.520" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.8.10 on linux)" generated="20230303 16:19:31.114" rpa="false" schemaversion="3">
 <suite id="s1" name="testVnf etsi" source="/home/chrisys/tutorials/4-test_your_vnfs_with_robot_framework/VNF_ETSI_Test/testVnf_etsi.robot">
 <test id="s1-t1" name="Testing if the validation output is OK" line="5">
 <kw name="Vnf Etsi" library="vnf_etsi">
 <var>${vnf_val}</var>
-<msg timestamp="20230303 11:38:10.353" level="INFO">err=''
+<msg timestamp="20230303 16:19:33.382" level="INFO">err=''
 curr='/home/ubuntu\n'
-stdin=&lt;paramiko.ChannelFile from &lt;paramiko.Channel 2 (open) window=2097152 -&gt; &lt;paramiko.Transport at 0x585e670 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))&gt;&gt;&gt;
-stdout=&lt;paramiko.ChannelFile from &lt;paramiko.Channel 2 (open) window=2097152 -&gt; &lt;paramiko.Transport at 0x585e670 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))&gt;&gt;&gt;
-stderr=&lt;paramiko.ChannelFile from &lt;paramiko.Channel 2 (open) window=2097152 -&gt; &lt;paramiko.Transport at 0x585e670 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))&gt;&gt;&gt;
+stdin=&lt;paramiko.ChannelFile from &lt;paramiko.Channel 2 (open) window=2097152 -&gt; &lt;paramiko.Transport at 0xe19c9820 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))&gt;&gt;&gt;
+stdout=&lt;paramiko.ChannelFile from &lt;paramiko.Channel 2 (open) window=2097152 -&gt; &lt;paramiko.Transport at 0xe19c9820 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))&gt;&gt;&gt;
+stderr=&lt;paramiko.ChannelFile from &lt;paramiko.Channel 2 (open) window=2097152 -&gt; &lt;paramiko.Transport at 0xe19c9820 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))&gt;&gt;&gt;
 vnf_val='OK'
 VNF (hash): +---------------+-------------------------------+-------+-------+
 | TYPE          | PATH                          | VALID | ERROR |
 +---------------+-------------------------------+-------+-------+
 | etsi_nfv_vnfd | 5gasp_emho_knf/emho_vnfd.yaml |   OK  | -     |
 +---------------+-------------------------------+-------+-------+</msg>
-<msg timestamp="20230303 11:38:10.353" level="INFO">${vnf_val} = OK</msg>
-<status status="PASS" starttime="20230303 11:38:08.188" endtime="20230303 11:38:10.353"/>
+<msg timestamp="20230303 16:19:33.382" level="INFO">${vnf_val} = OK</msg>
+<status status="PASS" starttime="20230303 16:19:31.670" endtime="20230303 16:19:33.382"/>
 </kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${type string1}</var>
-<arg>type('%{VNF_VALID}')</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20230303 11:38:10.354" level="INFO">${type string1} = &lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20230303 11:38:10.353" endtime="20230303 11:38:10.354"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${type string2}</var>
-<arg>type('${vnf_val}')</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20230303 11:38:10.354" level="INFO">${type string2} = &lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20230303 11:38:10.354" endtime="20230303 11:38:10.354"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${type string1}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230303 11:38:10.354" endtime="20230303 11:38:10.355"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${type string2}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230303 11:38:10.355" endtime="20230303 11:38:10.355"/>
-</kw>
-<kw name="Log" library="BuiltIn">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
 <arg>${vnf_val}</arg>
-<arg>console=yes</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230303 11:38:10.356" level="INFO">OK</msg>
-<status status="PASS" starttime="20230303 11:38:10.355" endtime="20230303 11:38:10.356"/>
-</kw>
-<kw name="Log" library="BuiltIn">
 <arg>%{VNF_VALID}</arg>
-<arg>console=yes</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230303 11:38:10.357" level="INFO">OK</msg>
-<status status="PASS" starttime="20230303 11:38:10.357" endtime="20230303 11:38:10.357"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<var>${validity}</var>
-<arg>'${vnf_val}'</arg>
-<arg>'${vnf_val}'</arg>
-<arg>strip_spaces=yes</arg>
-<arg>formatter=ascii</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<msg timestamp="20230303 11:38:10.358" level="INFO">${validity} = None</msg>
-<status status="PASS" starttime="20230303 11:38:10.358" endtime="20230303 11:38:10.358"/>
+<status status="PASS" starttime="20230303 16:19:33.382" endtime="20230303 16:19:33.382"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${validity}</arg>
-<arg>console=yes</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230303 11:38:10.359" level="INFO">None</msg>
-<status status="PASS" starttime="20230303 11:38:10.359" endtime="20230303 11:38:10.359"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${vnf_val}</arg>
-<arg>OK</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20230303 11:38:10.359" endtime="20230303 11:38:10.360"/>
-</kw>
-<kw name="Fail" library="BuiltIn">
-<arg>\nVNF/KNF Definition is Invalid</arg>
-<doc>Fails the test with the given message and optionally alters its tags.</doc>
-<msg timestamp="20230303 11:38:10.360" level="FAIL">
-VNF/KNF Definition is Invalid</msg>
-<status status="FAIL" starttime="20230303 11:38:10.360" endtime="20230303 11:38:10.360"/>
-</kw>
-<status status="FAIL" starttime="20230303 11:38:08.187" endtime="20230303 11:38:10.361">
-VNF/KNF Definition is Invalid</status>
+<status status="PASS" starttime="20230303 16:19:31.670" endtime="20230303 16:19:33.382"/>
 </test>
-<status status="FAIL" starttime="20230303 11:38:07.521" endtime="20230303 11:38:10.361"/>
+<status status="PASS" starttime="20230303 16:19:31.115" endtime="20230303 16:19:33.383"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="testVnf etsi">testVnf etsi</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="testVnf etsi">testVnf etsi</stat>
 </suite>
 </statistics>
 <errors>
