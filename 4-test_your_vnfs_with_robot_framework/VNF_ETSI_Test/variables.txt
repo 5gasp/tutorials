@@ -1,9 +1,0 @@
-#!/bin/bash
-export OSM_ip=172.16.16.17
-export machine_username=ubuntu
-export machine_password=5gasp%hpn
-export OSM_username=5gasp_univbris
-export OSM_password=5GASPUNiVBRI$ 
-export OSM_project=5GASP_UNIVBRIS
-export VNF_name=5gasp_emho_knf
-export VNF_VALID=OK
