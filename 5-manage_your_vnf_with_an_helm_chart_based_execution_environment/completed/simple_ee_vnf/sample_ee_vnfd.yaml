@@ -1,0 +1,94 @@
+# @Author: Daniel Gomes
+# @Date:   2023-02-02 12:28:37
+# @Last Modified by:   Daniel Gomes
+# @Last Modified time: 2023-02-06 16:50:23
+vnfd:
+  description: A VNF consisting of 1 VDU with cloud-init, and a sample ee
+  df:
+  - id: default-df
+    instantiation-level:
+    - id: default-instantiation-level
+      vdu-level:
+      - number-of-instances: 1
+        vdu-id: mgmtVM
+    vdu-profile:
+    - id: mgmtVM
+    lcm-operations-configuration:
+      operate-vnf-op-config:
+        day1-2:
+        - execution-environment-list:
+          - external-connection-point-ref: vnf-mgmt-ext
+            helm-chart: eechart
+            helm-version: v3
+            id: sample
+          id: mgmtVM
+          config-access:
+            ssh-access:
+              default-user: ubuntu
+              required: true
+          initial-config-primitive:
+          - execution-environment-ref: sample
+            name: config
+            parameter:
+            - name: ssh-hostname
+              value: <rw_mgmt_ip>
+            - name: ssh-username
+              value: ubuntu
+            - name: ssh-password
+              value: password
+            seq: 1
+          - execution-environment-ref: sample
+            name: ansible_playbook
+            parameter:
+            - name: ssh-hostname
+              value: <rw_mgmt_ip>
+            - name: playbook-name
+              value: playbook
+            seq: 2
+          config-primitive:
+          - execution-environment-primitive: ansible_playbook
+            execution-environment-ref: sample
+            name: ansible_playbook
+            parameter:
+              - data-type: STRING
+                name: playbook-name
+              - data-type: STRING
+                name: content
+                default-value: <content>
+  ext-cpd:
+  - id: vnf-mgmt-ext
+    int-cpd:
+      cpd: mgmtVM-eth0-int
+      vdu-id: mgmtVM
+  id: mgmtVM
+  mgmt-cp: vnf-mgmt-ext
+  product-name: mgmtVM
+  sw-image-desc:
+  - id: "ubuntu-20.04-server-cloudimg-amd64"
+    image: "ubuntu-20.04-server-cloudimg-amd64"
+    name: "ubuntu-20.04-server-cloudimg-amd64"
+  vdu:
+  - cloud-init-file: cloud-config.txt
+    id: mgmtVM
+    int-cpd:
+    - id: mgmtVM-eth0-int
+      virtual-network-interface-requirement:
+      - name: mgmtVM-eth0
+        position: 1
+        virtual-interface:
+          type: PARAVIRT
+    name: mgmtVM
+    sw-image-desc: "ubuntu-20.04-server-cloudimg-amd64"
+    virtual-compute-desc: mgmtVM-compute
+    virtual-storage-desc:
+    - mgmtVM-storage
+  version: 1.0
+  virtual-compute-desc:
+  - id: mgmtVM-compute
+    virtual-cpu:
+      num-virtual-cpu: 1
+    virtual-memory:
+      size: 1.0
+  virtual-storage-desc:
+  - id: mgmtVM-storage
+    size-of-storage: 20

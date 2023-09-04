@@ -1,0 +1,8 @@
+- hosts: all
+  name: Create an empty file on the remote machine
+  become: true
+  tasks:
+  - name: Create an empty file on the remote machine
+    file:
+      path: "/home/ubuntu/myfile.txt"
+      state: touch

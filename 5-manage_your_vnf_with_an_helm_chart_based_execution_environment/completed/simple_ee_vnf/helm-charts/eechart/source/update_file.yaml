@@ -1,0 +1,10 @@
+- hosts: all
+  vars:
+    content: "{{ params.content }}"
+  tasks:
+  - name: Update the content of the file
+    blockinfile:
+      path: "/home/ubuntu/myfile.txt"
+      block: |
+       "{{content}}"
+      

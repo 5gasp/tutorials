@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "eechart.fullname" . }}-test-connection"
+  labels:
+{{ include "eechart.labels" . | indent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args:  ['{{ include "eechart.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

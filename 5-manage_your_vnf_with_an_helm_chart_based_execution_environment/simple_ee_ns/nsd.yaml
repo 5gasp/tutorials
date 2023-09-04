@@ -1,0 +1,21 @@
+nsd:
+  nsd:
+  - description: NS with 1 VNFs with cloudinit connected by mgmtnet VLs
+    df:
+    - id: default-df
+      vnf-profile:
+      - id: simple
+        virtual-link-connectivity:
+        - constituent-cpd-id:
+          - constituent-base-element-id: simple
+            constituent-cpd-id: vnf-mgmt-ext
+          virtual-link-profile-id: mgmtnet
+        vnfd-id: simple
+    id: simple_ee-ns
+    name: simple_ee-ns
+    version: 1.0
+    virtual-link-desc:
+    - id: mgmtnet
+      mgmt-network: true
+    vnfd-id:
+    - simple

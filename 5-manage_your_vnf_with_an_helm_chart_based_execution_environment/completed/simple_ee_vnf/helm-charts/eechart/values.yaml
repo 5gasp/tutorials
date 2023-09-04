@@ -1,0 +1,72 @@
+global:
+  osm:
+    vnf_id: AVNFId
+
+# Default values for eechart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+image:
+  name: ansible-grpc
+  repository: atnog-harbor.av.it.pt/5gasp/ansible-grpc-keyauth@sha256
+  tag: 28e4a0a5cb210cabbc39d4b4fb597e786975d65e7a3a54365b1915b30fd72bbf
+  pullPolicy: Always
+
+
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+
+dockerConfig: ""
+
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 50050 #DO NOT Change. This is the port necessary for the GRPC Communication
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+mysql:
+  auth:
+    rootPassword: "123456"
+  fullnameOverride: "eechart-mysql"

@@ -1,0 +1,1 @@
+ - Adapted from OSM's (Docker API Front End)[https://osm.etsi.org/gitlab/vnf-onboarding/docker-api-fe]

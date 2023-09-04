@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.etsi.osm.lcm.osm_ee";
+option java_outer_classname = "GrpcExecutor";
+option objc_class_prefix = "OEE";
+
+package osm_ee;
+
+service FrontendExecutor {
+
+    // Execute action leaving open a channel for notifications
+    rpc RunPrimitive (PrimitiveRequest) returns (stream PrimitiveReply) {}
+
+    // Sends a greeting
+    rpc GetSshKey (SshKeyRequest) returns (SshKeyReply) {}
+}
+
+// Request parameters
+message PrimitiveRequest {
+    string id=1;
+    string name=2;
+    string params=3;
+}
+
+message PrimitiveReply {
+    string status=1;
+    string detailed_message=2;
+}
+
+// The request message containing the user's name.
+message SshKeyRequest {
+  // empty
+}
+
+// The response message containing the greetings
+message SshKeyReply {
+  string message = 1;
+}
