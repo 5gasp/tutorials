@@ -4,7 +4,7 @@
 
 OSM's Execution Environments (EE) provide a runtime framework to run day-1 and day-2 primitives. These EE provide the means for NF-specific management code to run it into a dedicated helm chart, which is deployed into OSM's system cluster. From there, the EE interacts with the managed NF (e.g. via SSH), providing a NF-agnostic mean to manage NFs by OSM.
 
-OSM communicates with its EE to trigger actions via gRPC calls, which are handled by a fronted component (running in a pod) in its constituent helm chart. In order to ease the NF onboarding tasks, there is already a helm chart template available including:
+OSM communicates with its EE to trigger actions via gRPC calls, which are handled by a frontend component (running in a pod) in its constituent helm chart. In order to ease the NF onboarding tasks, there is already a helm chart template available including:
 -  a frontend element which implements the gRPC interface required by OSM (exposed via a Kubernetes service). **However the OSM's current frontend element is outdated ( due to GRPC), thus a custom one will be used **
 -  and an optional back-end, in charge of the interaction with the NF.
 

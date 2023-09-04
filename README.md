@@ -61,4 +61,10 @@ In this tutorial, you will learn how to:
 * Use the robot framework to build a jitter test between 2 VNFs;
 * Run the test and explore the results.
 
+### How to manage your VNF with an Helm Chart-based Execution Environment (EE)
 
+In this tutorial, you will:
+
+* Understand how Execution Environments works in OSM;
+* Create day-1/day-2 primitives via Ansible;
+* Perform both day-1/day-2 operations in a VNF.
