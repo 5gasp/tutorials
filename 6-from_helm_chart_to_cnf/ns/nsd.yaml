@@ -1,0 +1,22 @@
+nsd:
+  nsd:
+  -   description: NEF Emulator Network Service
+      df:
+      -   id: default-df
+          vnf-profile:
+          -   id: nef_emulator
+              virtual-link-connectivity:
+              -   constituent-cpd-id:
+                  -   constituent-base-element-id: nef_emulator
+                      constituent-cpd-id: mgmt-ext
+                  virtual-link-profile-id: mgmtnet
+              vnfd-id: nef_emulator_cnf
+      id: nef_emulator_nsd
+      name: nef_emulator_nsd
+      version: '1.0'
+      virtual-link-desc:
+      -   id: mgmtnet
+          mgmt-network: 'true'
+          vim-network-name: xxxxx
+      vnfd-id:
+      - nef_emulator_cnf

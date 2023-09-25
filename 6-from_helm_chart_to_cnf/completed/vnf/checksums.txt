@@ -1,0 +1,2 @@
+941766cefadf0f81f4615310ea7ecee9	vnf/vnfd.yaml
+4664c4592521e99304e2ceb6ffb848d9	vnf/helm-chart-v3s/nef-emulator-0.1.0.tgz

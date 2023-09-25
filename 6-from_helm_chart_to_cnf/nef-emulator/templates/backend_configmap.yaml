@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+data:
+  # postgres
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: pass
+  POSTGRES_SERVER: {{ include "nef-db.fullname" . }}
+  POSTGRES_DB: app
+  # app
+  REPORT_PATH: "../shared/report.json"
+  SERVER_NAME: "localhost"
+  SERVER_HOST: "http://localhost"
+  SERVER_PORT: "8888"
+  BACKEND_CORS_ORIGINS: '["http://localhost", "https://5g-api-emulator.medianetlab.eu"]'
+  PROJECT_NAME: NEF_Emulator
+  SECRET_KEY: 2D47CF2958CEC7CC86C988E9F9684
+  FIRST_SUPERUSER: admin@my-email.com
+  FIRST_SUPERUSER_PASSWORD: pass
+  SMTP_TLS: "True"
+  SMTP_PORT: "465"
+  SMTP_HOST: mail.host.com
+  SMTP_USER: user
+  SMTP_PASSWORD: pass
+  EMAILS_FROM_EMAIL: user@my-email.com
+  USERS_OPEN_REGISTRATION: "true"
+  SENTRY_DSN: ""

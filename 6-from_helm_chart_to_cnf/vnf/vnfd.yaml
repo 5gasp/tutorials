@@ -1,0 +1,11 @@
+vnfd:
+  description: CNF for NEF Emulator
+  df:
+  - id: default-df
+  ext-cpd:
+  - id: mgmt-ext
+    k8s-cluster-net: mgmtnet
+  id: nef_emulator_cnf
+  mgmt-cp: mgmt-ext
+  product-name: nef_emulator_cnf
+  version: 1.0

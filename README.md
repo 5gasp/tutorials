@@ -68,3 +68,11 @@ In this tutorial, you will:
 * Understand how Execution Environments works in OSM;
 * Create day-1/day-2 primitives via Ansible;
 * Perform both day-1/day-2 operations in a VNF.
+
+### From a Helm Chart to a CNF
+
+In this tutorial, you will:
+
+* Understand what is a CNF
+* Understand how does a CNF work in the context of OSM
+* Learn how to deploy a CNF from a Helm Chart
