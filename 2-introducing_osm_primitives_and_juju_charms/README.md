@@ -14,7 +14,7 @@ Installation of juju and charmcraft
 	cd charms/prometheus_node_exporter
 	mkdir hooks lib mod src
 	touch src/charm.py
-	touch actions.yaml metadata.yaml config.yaml
+	touch actions.yaml metadata.yaml config.yaml local-config.yaml
 	chmod +x src/charm.py
 	ln -s ../src/charm.py hooks/upgrade-charm
 	ln -s ../src/charm.py hooks/install
