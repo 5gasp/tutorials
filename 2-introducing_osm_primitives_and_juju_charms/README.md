@@ -4,27 +4,27 @@
 
 Installation of juju and charmcraft
 
-	$ sudo snap install juju --classic
-	$ sudo snap install charm --classic
-	$ sudo snap install charmcraft --classic
+	sudo snap install juju --classic
+	sudo snap install charm --classic
+	sudo snap install charmcraft --classic
 
 ## Creation of the Charm structure
 
-	$ mkdir -p charms/prometheus_node_exporter/
-	$ cd charms/prometheus_node_exporter
-	$ mkdir hooks lib mod src
-	$ touch src/charm.py
-	$ touch actions.yaml metadata.yaml config.yaml
-	$ chmod +x src/charm.py
-	$ ln -s ../src/charm.py hooks/upgrade-charm
-	$ ln -s ../src/charm.py hooks/install
+	mkdir -p charms/prometheus_node_exporter/
+	cd charms/prometheus_node_exporter
+	mkdir hooks lib mod src
+	touch src/charm.py
+	touch actions.yaml metadata.yaml config.yaml
+	chmod +x src/charm.py
+	ln -s ../src/charm.py hooks/upgrade-charm
+	ln -s ../src/charm.py hooks/install
 	
-	$ ln -s ../src/charm.py hooks/start
-	$ git clone https://github.com/canonical/operator mod/operator
-	$ git clone https://github.com/charmed-osm/charms.osm mod/charms.osm
-	$ ln -s ../mod/operator/ops lib/ops
-	$ ln -s ../mod/charms.osm/charms lib/charms
-	$ echo “packaging” > requirements.txt
+	ln -s ../src/charm.py hooks/start
+	git clone https://github.com/canonical/operator mod/operator
+	git clone https://github.com/charmed-osm/charms.osm mod/charms.osm
+	ln -s ../mod/operator/ops lib/ops
+	ln -s ../mod/charms.osm/charms lib/charms
+	echo “packaging” > requirements.txt
 
 After running these commands, you should have the following structure:
 
@@ -229,28 +229,28 @@ prometheus-node-exporter:
 
 Before building the charm you might need to execute the following commands:
 
-	$ lxd init --auto
-	$ lxc network set lxdbr0 ipv6.address none
+	lxd init --auto
+	lxc network set lxdbr0 ipv6.address none
 	
 Build the charm:
 
-	$ charmcraft build
+	charmcraft build
 	
 Before deploying you might need to choose your controller (In your case should be localhost):
 	
-	$ juju bootstrap
+	juju bootstrap
 	
 Deploying the charm using the configurations in the local-config file:
 
-	$ juju deploy ./prometheus-node-exporter_ubuntu-20.04-amd64.charm  --config local-config.yaml
+	juju deploy ./prometheus-node-exporter_ubuntu-20.04-amd64.charm  --config local-config.yaml
 	
 Check status:
 
-	$ juju status
+	juju status
 	
 Execute the **'run'** action to run a command inside the VM/VNF. You can check your *unit_id* with juju status.
 
-	$ juju run-action prometheus-node-exporter/<unit_id> run "command"="ls -la" --wait
+	juju run-action prometheus-node-exporter/<unit_id> run "command"="ls -la" --wait
 	
 
 
@@ -454,35 +454,35 @@ def _stop_prometheus_exporter(self, event):
 
 First, remove the first charm that we deployed:
 
-	$ juju remove-application prometheus-node-exporter
+	juju remove-application prometheus-node-exporter
 	
 Using the commands in the first charm, build and deploy.
 
 #### Run the action for the prometheus that we created
 
-	$ juju run-action prometheus-node-exporter/<unit_id> start-prometheus-exporter --wait
+	juju run-action prometheus-node-exporter/<unit_id> start-prometheus-exporter --wait
 	
 ## Useful juju commands
 
 ### Delete an application
 
-	$ juju remove-application <application_id>
+	juju remove-application <application_id>
 
 ### Delete a machine 
 
-	$ juju remove-machine <machine_id>
+	juju remove-machine <machine_id>
 
 ### Check deployment logs
 
-	$ juju debug-log
+	juju debug-log
 	
 ### Continuously observe deployment status
 
-	$ juju status –watch 5s
+	juju status –watch 5s
 
 ### Access machine terminal
 
-	$ juju ssh <machine_id>
+	juju ssh <machine_id>
 
 
         
