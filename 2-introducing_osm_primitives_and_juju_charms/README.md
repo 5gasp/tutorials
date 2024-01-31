@@ -24,7 +24,7 @@ Installation of juju and charmcraft
 	git clone https://github.com/charmed-osm/charms.osm mod/charms.osm
 	ln -s ../mod/operator/ops lib/ops
 	ln -s ../mod/charms.osm/charms lib/charms
-	echo “packaging” > requirements.txt
+	echo "packaging" > requirements.txt
 
 After running these commands, you should have the following structure:
 
