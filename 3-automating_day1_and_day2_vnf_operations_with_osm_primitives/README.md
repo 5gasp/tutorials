@@ -327,7 +327,7 @@ You can try to execute the primitives via the OSM UI, just go to `Action > Exec 
 
 <img src="images/stop_primitive.png" alt="10%" style="zoom:100%;" />
 
-After stopping the prometheus, you shloud have this:
+After stopping the prometheus, you should have this:
 
 <img src="images/fail_curl.png" alt="10%" style="zoom:100%;" />
 
