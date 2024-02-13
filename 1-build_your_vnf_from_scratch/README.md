@@ -261,7 +261,7 @@ You can also check if your instance is running in the VIM account.
 
 ### Check the cloud init file
 
-With the VMup and running, you can check if the cloud-init file worked:
+With the VM up and running, you can check if the cloud-init file worked:
 
 	$ ssh ubuntu@<your_machine_ip>
 	$ nmap
