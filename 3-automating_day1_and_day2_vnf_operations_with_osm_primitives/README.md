@@ -25,25 +25,25 @@ The first step is to download the resources from the previous tutorials.
 
 ```bash
 # download the base VNF and NS
-$ curl https://codeload.github.com/5gasp/tutorials/tar.gz/master |  tar -xz --strip=2 tutorials-master/1-build_your_vnf_from_scratch/outputs
+curl https://codeload.github.com/5gasp/tutorials/tar.gz/master |  tar -xz --strip=2 tutorials-master/1-build_your_vnf_from_scratch/outputs
 # organize your file structure
-$ mv outputs/* .
-$ rm outputs –d
+mv outputs/* .
+rm outputs –d
 # add the base juju charm to the VNF file structure
-$ cd tutorial_vnf
-$ curl https://codeload.github.com/5gasp/tutorials/tar.gz/master |  tar -xz --strip=2 tutorials-master/2-introducing_osm_primitives_and_juju_charms
+cd tutorial_vnf
+curl https://codeload.github.com/5gasp/tutorials/tar.gz/master |  tar -xz --strip=2 tutorials-master/2-introducing_osm_primitives_and_juju_charms
 # since there were some references to git repositories in the juju charm, you might have to clone these reference repositories again. 
 # To do so, execute:
-$ cd tutorial_vnf/charms/prometheus-node-exporter
-$ rm –rf hooks lib mod
-$ mkdir hooks lib mod
-$ ln -s ../src/charm.py hooks/upgrade-charm
-$ ln -s ../src/charm.py hooks/install
-$ ln -s ../src/charm.py hooks/start 
-$ git clone https://github.com/canonical/operator mod/operator 
-$ git clone https://github.com/charmed-osm/charms.osm mod/charms.osm
-$ ln -s ../mod/operator/ops lib/ops 
-$ ln -s ../mod/charms.osm/charms lib/charms
+cd tutorial_vnf/charms/prometheus-node-exporter
+rm –rf hooks lib mod
+mkdir hooks lib mod
+ln -s ../src/charm.py hooks/upgrade-charm
+ln -s ../src/charm.py hooks/install
+ln -s ../src/charm.py hooks/start 
+git clone https://github.com/canonical/operator mod/operator 
+git clone https://github.com/charmed-osm/charms.osm mod/charms.osm
+ln -s ../mod/operator/ops lib/ops 
+ln -s ../mod/charms.osm/charms lib/charms
 ```
 
 Notice that you are recreating the content of `mod/operator` and `mod/charms.osm`. This is not entirely mandatory, but if you don’t do this you might encounter some problems later, since the content of theses two directories was added via a git submodule.
@@ -285,9 +285,9 @@ After that, and since we want to automatically start the prometheus exporter onc
 
 ```bash
 # let’s package and onboard our VNF
-$ sudo osm --hostname 10.0.12.98 vnfpkg-create tutorial_vnf/
+sudo osm --hostname 10.0.12.98 vnfpkg-create tutorial_vnf/
 # let’s package and onboard our NS
-$ sudo osm --hostname 10.0.12.98 nspkg-create tutorial_ns/
+sudo osm --hostname 10.0.12.98 nspkg-create tutorial_ns/
 
 ```
 
@@ -305,11 +305,11 @@ You can check your charm deployment, inside your OSM machine, to make sure it is
 
 ```bash
 # on your OSM machine – check the instantiated juju models
-$ juju models
+juju models
 # switch to your model – example:
-$ juju switch 2b294cdc-5000-4e7f-8f6b-5fa41a91fa06
+juju switch 2b294cdc-5000-4e7f-8f6b-5fa41a91fa06
 # get the logs
-$ juju debug-log --replay
+juju debug-log --replay
 ```
 
 If everything goes accordingly, you should have this:
