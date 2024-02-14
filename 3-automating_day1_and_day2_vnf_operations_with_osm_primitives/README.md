@@ -267,7 +267,7 @@ install_dependencies()
 from charms.osm.sshproxy import SSHProxyCharm
 ```
 
-Notice that we are calling the function before importing the `SSHProxyCharm` class, ohterwise it will fail.
+Notice that we are calling the function before importing the `SSHProxyCharm` class, otherwise it will fail.
 
 After that, and since we want to automatically start the prometheus exporter once the VNF starts, we need to call it inside the VNF `on_start` function:
 
