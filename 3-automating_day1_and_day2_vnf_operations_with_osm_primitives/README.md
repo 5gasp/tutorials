@@ -35,7 +35,7 @@ curl https://codeload.github.com/5gasp/tutorials/tar.gz/master |  tar -xz --str
 # since there were some references to git repositories in the juju charm, you might have to clone these reference repositories again. 
 # To do so, execute:
 cd tutorial_vnf/charms/prometheus-node-exporter
-rm –rf hooks lib mod
+rm -rf hooks lib mod
 mkdir hooks lib mod
 ln -s ../src/charm.py hooks/upgrade-charm
 ln -s ../src/charm.py hooks/install
