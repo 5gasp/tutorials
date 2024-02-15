@@ -28,7 +28,7 @@ The first step is to download the resources from the previous tutorials.
 curl https://codeload.github.com/5gasp/tutorials/tar.gz/master |  tar -xz --strip=2 tutorials-master/1-build_your_vnf_from_scratch/outputs
 # organize your file structure
 mv outputs/* .
-rm outputs –d
+rm outputs -d
 # add the base juju charm to the VNF file structure
 cd tutorial_vnf
 curl https://codeload.github.com/5gasp/tutorials/tar.gz/master |  tar -xz --strip=2 tutorials-master/2-introducing_osm_primitives_and_juju_charms
